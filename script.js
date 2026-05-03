@@ -57,20 +57,28 @@ function render() {
             <div class="title">${book.title}</div>
             <div class="book-info">${book.author}</div>
             <div class="book-info">${book.pages} pages</div>
-            <div class="book-info">${book.read}</div>
+            <div class="book-info"><button id="${book.id}toggleRead">${book.read}</button></div>
             <hr>
             <div class="book-info"><button class="removebutton" id="${book.id}RemoveBook">remove book</button></div>`;
         stack.appendChild(bookCover);
         const removeBookButton = document.getElementById(`${book.id}RemoveBook`);
+        const index = library.findIndex(item => item.id === `${book.id}`);
+
         removeBookButton.addEventListener('click', function (e) {
-            console.log(this.id); // logs the className of myElement
-            const index = library.findIndex(item => item.id === `${book.id}`);
             if (index > -1) {
                 library.splice(index, 1);
                 render();
             }
         });
+        const toggleRead = document.getElementById(`${book.id}toggleRead`);
+        toggleRead.addEventListener('click', function (e) {
 
+            if (index > -1) {
+                library[index].read = (library[index].read === "not yet read") ? "read" : "not yet read";
+
+                render();
+            }
+        });
 
     }
     const cards = [...document.querySelectorAll(".card")];
