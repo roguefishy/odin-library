@@ -32,6 +32,7 @@ bookForm.addEventListener('submit', (e) => {
     const myDialog = document.getElementById('my-dialog');
     myDialog.close();
     render();
+    e.target.reset(); 23
 
 });
 
