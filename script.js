@@ -65,7 +65,8 @@ function render() {
             console.log(this.id); // logs the className of myElement
             const index = library.findIndex(item => item.id === `${book.id}`);
             if (index > -1) {
-                items.splice(index, 1);
+                library.splice(index, 1);
+                render();
             }
         });
 
