@@ -19,30 +19,59 @@ function addBookToLibrary(title, author, pages, read) {
     library.push(new Book(title, author, pages, read));
 }
 
-addBookToLibrary("The Great Gatsby", "F. Scott Fitzgerald", 180, true);
-addBookToLibrary("The Hobbit", "J.R.R. Tolkien", 295, true);
-addBookToLibrary("Atomic Habits", "James Clear", 320, false);
+const bookForm = document.getElementById('addBook-form');
+
+bookForm.addEventListener('submit', (e) => {
+    e.preventDefault(); // Stops the page from refreshing
+
+    const form = new FormData(e.target);
+
+    // Get a specific field by its "name" attribute
+    addBookToLibrary(form.get('title'), form.get('author'), form.get('pages'), form.get('readStatus'));
+
+    const myDialog = document.getElementById('my-dialog');
+    myDialog.close();
+    render();
+
+});
+
+
+addBookToLibrary("The Great Gatsby", "F. Scott Fitzgerald", 180, "read");
+addBookToLibrary("The Hobbit", "J.R.R. Tolkien", 295, "not yet read");
+addBookToLibrary("Atomic Habits", "James Clear", 320, "not yet read");
 console.log(library);
 
-for (const book of library) {
-    console.log(book.info());
-    const bookCover = document.createElement("article");
-    bookCover.className = "card";
-    const bookInfo = book.info();
-    bookCover.innerHTML = `          
+// this part is the script that display the books in library
+let active = 2;
+
+function render() {
+    const stack = document.getElementById("stack");
+    stack.innerHTML = "";
+
+    for (const book of library) {
+        const bookCover = document.createElement("article");
+        bookCover.className = "card";
+        const bookInfo = book.info();
+        bookCover.innerHTML = `          
             <div class="title">${book.title}</div>
             <div class="book-info">${book.author}</div>
             <div class="book-info">${book.pages} pages</div>
             <div class="book-info">${book.read}</div>
             <hr>
-            <div class="book-info"><button class="removebutton">remove book</button></div>`;
-    const stack = document.getElementById("stack");
-    stack.appendChild(bookCover);
-}
-const cards = [...document.querySelectorAll(".card")];
-let active = 2;
+            <div class="book-info"><button class="removebutton" id="${book.id}RemoveBook">remove book</button></div>`;
+        stack.appendChild(bookCover);
+        const removeBookButton = document.getElementById(`${book.id}RemoveBook`);
+        removeBookButton.addEventListener('click', function (e) {
+            console.log(this.id); // logs the className of myElement
+            const index = library.findIndex(item => item.id === `${book.id}`);
+            if (index > -1) {
+                items.splice(index, 1);
+            }
+        });
 
-function render() {
+
+    }
+    const cards = [...document.querySelectorAll(".card")];
     cards.forEach((card, index) => {
         const offset = index - active;
         const abs = Math.abs(offset);
@@ -66,6 +95,7 @@ function render() {
 }
 
 function move(direction) {
+    const cards = [...document.querySelectorAll(".card")];
     active = (active + direction + cards.length) % cards.length;
     render();
 }

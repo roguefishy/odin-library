@@ -1,9 +1,11 @@
 body {
   margin: 0;
-  min-height: 100vh;
+  height: 100vh;
+  width: 100vw;
   display: grid;
   place-items: center;
-  background: #f6edd8;
+  background: linear-gradient(178deg, #f5d7d5 1%, #c0c8a7 100%, #bfc8a6 100%);
+
   font-family: "Sour Gummy", sans-serif;
 }
 
@@ -18,20 +20,21 @@ body {
 
 .stack {
   position: relative;
-  width: 660px;
-  height: 320px;
+  width: 90vw;
+  height: 55vh;
+  overflow: hidden;
+  border: 3px #2b211c solid;
+  background: #f6edd8;
 }
 
 .card {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 210px;
-  height: 320px;
+  width: 160px;
+  height: 200px;
   border-radius: 36px;
   box-shadow: 0 10px 24px rgba(0, 0, 0, 0.28);
-  font-size: 28px;
-  font-weight: 700;
   color: #2b211c;
   transform: translate(-50%, -50%);
   transition:
@@ -63,11 +66,13 @@ body {
   justify-content: center;
 }
 .book-info {
-  font-size: 20;
+  font-size: 20px;
   font-weight: 500;
 }
 
 .title {
+  font-size: 24px;
+  font-weight: 600;
   text-decoration: underline;
 }
 article {
@@ -77,4 +82,8 @@ article {
   align-items: center;
   justify-content: center;
   flex-direction: column;
+}
+
+hr {
+  width: 100px;
 }
