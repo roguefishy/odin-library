@@ -11,6 +11,7 @@
     <title>Odin Library</title>
   </head>
   <body>
+    <div><h1>~Library~</h1></div>
     <div class="carousel">
       <button class="nav prev" onclick="move(-1)">‹</button>
 
@@ -19,7 +20,9 @@
       <button class="nav next" onclick="move(1)">›</button>
     </div>
 
-    <button command="show-modal" commandfor="my-dialog">add book</button>
+    <button command="show-modal" commandfor="my-dialog" id="addBookButton">
+      add book
+    </button>
 
     <dialog id="my-dialog">
       <form class="book-form" id="addBook-form">
@@ -70,17 +73,16 @@
             Not yet read
           </label>
         </fieldset>
-
-        <div>
-          <button commandfor="my-dialog" command="close">Cancel</button>
-          <input
-            type="submit"
-            value="Submit"
-            form="addBook-form"
-            id="submitBook"
-          />
-        </div>
       </form>
+      <div class="dialogButtons">
+        <button commandfor="my-dialog" command="close">Cancel</button>
+        <input
+          type="submit"
+          value="Submit"
+          form="addBook-form"
+          id="submitBook"
+        />
+      </div>
     </dialog>
 
     <script src="script.js"></script>

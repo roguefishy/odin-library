@@ -2,17 +2,14 @@ body {
   margin: 0;
   height: 100vh;
   width: 100vw;
-  display: grid;
-  place-items: center;
+  justify-items: center;
   background: linear-gradient(178deg, #f5d7d5 1%, #c0c8a7 100%, #bfc8a6 100%);
-
   font-family: "Sour Gummy", sans-serif;
+  overflow: scroll;
 }
 
 .carousel {
-  position: relative;
-  width: 760px;
-  height: 420px;
+  position: absolute;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -20,9 +17,9 @@ body {
 
 .stack {
   position: relative;
-  width: 90vw;
-  height: 55vh;
-  overflow: hidden;
+  width: 80vw;
+  height: 60vh;
+  overflow: scroll;
   border: 3px #2b211c solid;
   background: #f6edd8;
 }
@@ -53,8 +50,7 @@ body {
 }
 
 .nav {
-  border: 0;
-  background: transparent;
+  margin: 5px;
   font-size: 42px;
   cursor: pointer;
 }
@@ -64,6 +60,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  text-align: center;
 }
 .book-info {
   font-size: 20px;
@@ -86,4 +83,53 @@ article {
 
 hr {
   width: 100px;
+  border: 1px #2b211c solid;
+}
+
+#addBookButton {
+  position: absolute;
+  top: 85vh;
+  width: 150px;
+  height: 40px;
+  font-size: large;
+}
+
+button,
+#submitBook {
+  display: flex;
+  background: #f9f1de;
+  box-shadow: 4px 5px 0px rgba(0, 0, 0, 0.25);
+  border-radius: 64px;
+  border: 1px #5c5344 solid;
+  justify-content: center;
+  align-items: center;
+  font-family: "Sour Gummy", sans-serif;
+}
+
+button,
+#submitBook {
+  padding: 3px 10px;
+  font-size: small;
+}
+
+.dialogButtons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  margin: 5px;
+}
+
+h1 {
+  color: #f9f1de;
+  font-size: 112.69px;
+  font-family: Sour Gummy;
+  font-weight: 900;
+  word-wrap: break-word;
+  text-shadow:
+    6px 8px 0px rgba(92, 83, 68, 1),
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;
 }
